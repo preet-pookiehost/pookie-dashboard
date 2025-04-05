@@ -3,55 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pookie Admin Panel</title>
+  <title>Pookie Discord Bot Panel</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>PookieCore Admin Panel</h1>
-      <p>Monitor & control your bot from here</p>
+      <h1>PookieCore Discord Bot Panel</h1>
+      <p>Manage and control your deployed bots from here</p>
     </header>
 
-    <section class="status-section">
-      <h2>Bot Status: <span id="bot-status">Offline</span></h2>
-      <button onclick="startBot()">Start Bot</button>
-      <button onclick="stopBot()">Stop Bot</button>
-    </section>
+    <section class="bots-grid">
+      <div class="bot-card">
+        <h2>Pookie v2.0</h2>
+        <p>Status: <span class="status online">Online</span></p>
+        <button onclick="startBot('v2')">Start</button>
+        <button onclick="stopBot('v2')">Stop</button>
+        <p>Uptime: <span id="uptime-v2">3h 42m</span></p>
+        <p>Boosts: <span id="boosts-v2">2/3</span></p>
+      </div>
 
-    <section class="stats">
-      <div class="card">
-        <h3>Session Time</h3>
-        <p id="session-timer">0m</p>
-      </div>
-      <div class="card">
-        <h3>Boosts Left</h3>
-        <p id="boost-count">3</p>
-      </div>
-      <div class="card">
-        <h3>Active Bots</h3>
-        <p id="active-bots">0</p>
+      <div class="bot-card">
+        <h2>Pookie v3.0</h2>
+        <p>Status: <span class="status offline">Offline</span></p>
+        <button onclick="startBot('v3')">Start</button>
+        <button onclick="stopBot('v3')">Stop</button>
+        <p>Uptime: <span id="uptime-v3">0h</span></p>
+        <p>Boosts: <span id="boosts-v3">0/3</span></p>
       </div>
     </section>
 
     <section class="console-section">
-      <h2>Console Logs</h2>
-      <div id="console-output">Waiting for output...</div>
+      <h2>Bot Console Logs</h2>
+      <select onchange="switchLog(this.value)">
+        <option value="v2">Pookie v2.0</option>
+        <option value="v3">Pookie v3.0</option>
+      </select>
+      <div id="console-output">Waiting for logs...</div>
     </section>
   </div>
 
   <script>
-    function startBot() {
-      document.getElementById("bot-status").textContent = "Starting...";
-      alert("Trigger backend to start the bot here.");
+    function startBot(botId) {
+      alert(`Starting bot: ${botId}`);
+      // Hook to backend endpoint like /start?v=v2
     }
 
-    function stopBot() {
-      document.getElementById("bot-status").textContent = "Stopping...";
-      alert("Trigger backend to stop the bot here.");
+    function stopBot(botId) {
+      alert(`Stopping bot: ${botId}`);
+      // Hook to backend endpoint like /stop?v=v2
     }
 
-    // Later: use fetch() to get logs from Flask or Colab every 2s
+    function switchLog(botId) {
+      document.getElementById("console-output").innerText = `Loading logs for ${botId}...`;
+      // Fetch logs for the selected bot and update the display
+    }
   </script>
 </body>
 </html>

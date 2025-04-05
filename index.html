@@ -2,35 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PookieCore Admin Panel</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pookie Admin Panel</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>PookieCore Admin Panel</h1>
-    <p>Monitor all active bots in real time</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>PookieCore Admin Panel</h1>
+      <p>Monitor & control your bot from here</p>
+    </header>
 
-  <main>
-    <section id="bot-status-section">
-      <!-- Placeholder bot card -->
-      <div class="bot-card">
-        <h2>PookiePieBot #01</h2>
-        <p><strong>User:</strong> Dynamicpreet_XD</p>
-        <p><strong>Status:</strong> <span class="status running">Running</span></p>
-        <p><strong>IP:</strong> 127.0.0.1</p>
-        <p><strong>Uptime:</strong> 1h 35m</p>
-        <button onclick="stopBot('bot1')">Stop Bot</button>
-      </div>
-      <!-- Add more cards dynamically via JS -->
+    <section class="status-section">
+      <h2>Bot Status: <span id="bot-status">Offline</span></h2>
+      <button onclick="startBot()">Start Bot</button>
+      <button onclick="stopBot()">Stop Bot</button>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 PookieCore by Pie</p>
-  </footer>
+    <section class="stats">
+      <div class="card">
+        <h3>Session Time</h3>
+        <p id="session-timer">0m</p>
+      </div>
+      <div class="card">
+        <h3>Boosts Left</h3>
+        <p id="boost-count">3</p>
+      </div>
+      <div class="card">
+        <h3>Active Bots</h3>
+        <p id="active-bots">0</p>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
+    <section class="console-section">
+      <h2>Console Logs</h2>
+      <div id="console-output">Waiting for output...</div>
+    </section>
+  </div>
+
+  <script>
+    function startBot() {
+      document.getElementById("bot-status").textContent = "Starting...";
+      alert("Trigger backend to start the bot here.");
+    }
+
+    function stopBot() {
+      document.getElementById("bot-status").textContent = "Stopping...";
+      alert("Trigger backend to stop the bot here.");
+    }
+
+    // Later: use fetch() to get logs from Flask or Colab every 2s
+  </script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PookieCore Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>PookieCore Admin Panel</h1>
+    <p>Monitor all active bots in real time</p>
+  </header>
+
+  <main>
+    <section id="bot-status-section">
+      <!-- Placeholder bot card -->
+      <div class="bot-card">
+        <h2>PookiePieBot #01</h2>
+        <p><strong>User:</strong> Dynamicpreet_XD</p>
+        <p><strong>Status:</strong> <span class="status running">Running</span></p>
+        <p><strong>IP:</strong> 127.0.0.1</p>
+        <p><strong>Uptime:</strong> 1h 35m</p>
+        <button onclick="stopBot('bot1')">Stop Bot</button>
+      </div>
+      <!-- Add more cards dynamically via JS -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PookieCore by Pie</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
